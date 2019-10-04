@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  cloud-cli:
+    image: docker.pkg.github.com/informatica-na-presales-ops/cloud-cli/cloud-cli
+    build: .
+    volumes:
+      - aws-credentials:/root/.aws
+      - azure-credentials:/root/.azure
+
+volumes:
+  aws-credentials:
+  azure-credentials:
