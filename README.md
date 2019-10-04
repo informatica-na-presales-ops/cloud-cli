@@ -2,6 +2,10 @@
 
 A Docker image that includes both [AWS CLI][a] and [Azure CLI][b] tools
 
+```sh
+$ docker image pull docker.pkg.github.com/informatica-na-presales-ops/cloud-cli/cloud-cli
+```
+
 [a]: https://aws.amazon.com/cli/
 [b]: https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
 
