@@ -1,16 +1,15 @@
-FROM python:3.7.4-alpine3.10
+FROM python:3.8.0-alpine3.10
 
-ARG AWS_CLI_VERSION="1.16.254"
-ARG AZURE_CLI_VERSION="2.0.74"
+COPY requirements.txt /cloud-cli/requirements.txt
 
 RUN /sbin/apk add --no-cache --virtual .deps gcc libffi-dev make musl-dev openssl-dev \
  && /sbin/apk add --no-cache bash ca-certificates curl jq openssh openssl \
- && /usr/local/bin/pip install --no-cache-dir "awscli==${AWS_CLI_VERSION}" "azure-cli==${AZURE_CLI_VERSION}" \
+ && /usr/local/bin/pip install --no-cache-dir --requirement /cloud-cli/requirements.txt \
  && /sbin/apk del --no-cache .deps
 
-ENV PS1="\n\[\033[1;36m\]\w\[\033[0m\] \$ " \
-    PYTHONUNBUFERED="1" \
-    IMAGE_VERSION="2019.2"
+ENV IMAGE_VERSION="2019.2" \
+    PS1="\n\[\033[1;36m\]\w\[\033[0m\] \$ " \
+    PYTHONUNBUFERED="1"
 
 ENTRYPOINT ["/bin/bash"]
 
