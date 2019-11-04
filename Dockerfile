@@ -1,4 +1,4 @@
-FROM python:3.8.0-alpine3.10
+FROM python:3.7.5-alpine3.10
 
 COPY requirements.txt /cloud-cli/requirements.txt
 
