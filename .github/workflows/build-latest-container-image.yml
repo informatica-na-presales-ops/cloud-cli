@@ -13,7 +13,9 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v1
     - name: Log in to the registry
-      run: docker login --password "${GITHUB_TOKEN}" --username "${GITHUB_ACTOR}" docker.pkg.github.com
+      run: docker login --password "${REGISTRY_PASSWORD}" --username "${GITHUB_ACTOR}" docker.pkg.github.com
+      env:
+        REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
     - name: Set the container image name
       id: set-image-name
       run: echo ::set-output name=image-name::docker.pkg.github.com/${GITHUB_REPOSITORY}/${IMAGE_NAME}:latest
