@@ -20,6 +20,6 @@ jobs:
     - name: Build the container image
       run: docker build --file Dockerfile --tag ${{ steps.set-image-name.outputs.image-name }} .
     - name: Log in to the registry
-      run: docker login --password ${GITHUB_TOKEN} --username anonymous docker.pkg.github.com
+      run: docker login --password "${GITHUB_TOKEN}" --username anonymous docker.pkg.github.com
     - name: Push the image to the registry
       run: docker image push ${{ steps.set-image-name.outputs.image-name }}
