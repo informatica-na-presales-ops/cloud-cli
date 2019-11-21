@@ -11,7 +11,9 @@ $ docker image pull docker.pkg.github.com/informatica-na-presales-ops/cloud-cli/
 
 ## Available tags
 
-* `latest` &rarr; `2019.4`  
+* `latest` &rarr; `2019.5`  
+  `awscli==1.16.287`, `azure-cli==2.0.76`
+* `2019.4`  
   `awscli==1.16.272`, `azure-cli==2.0.76`
 * `2019.3`  
   `awscli==1.16.263`, `azure-cli==2.0.75`

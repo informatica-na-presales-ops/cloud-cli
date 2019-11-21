@@ -7,7 +7,7 @@ RUN /sbin/apk add --no-cache --virtual .deps gcc libffi-dev make musl-dev openss
  && /usr/local/bin/pip install --no-cache-dir --requirement /cloud-cli/requirements.txt \
  && /sbin/apk del --no-cache .deps
 
-ENV IMAGE_VERSION="2019.4" \
+ENV IMAGE_VERSION="2019.5" \
     PS1="\n\[\033[1;36m\]\w\[\033[0m\] \$ " \
     PYTHONUNBUFERED="1"
 
