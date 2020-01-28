@@ -3,7 +3,7 @@ FROM python:3.8.1-alpine3.11
 COPY requirements.txt /cloud-cli/requirements.txt
 
 RUN /sbin/apk add --no-cache --virtual .deps gcc libffi-dev make musl-dev openssl-dev \
- && /sbin/apk add --no-cache bash ca-certificates curl jq openssh openssl \
+ && /sbin/apk add --no-cache bash ca-certificates curl groff jq openssh openssl \
  && /usr/local/bin/pip install --no-cache-dir --requirement /cloud-cli/requirements.txt \
  && /sbin/apk del --no-cache .deps
 
