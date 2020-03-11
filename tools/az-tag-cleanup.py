@@ -10,13 +10,13 @@ def get_subscriptions(credentials: azure.common.credentials.ServicePrincipalCred
 
 
 def check_tags(resource):
-    print(resource.id)
     if resource.tags is None:
         resource.tags = {}
     for k in resource.tags.keys():
         kl = k.lower()
         # if 'bus' in kl and not kl.startswith('b'):
-        if kl == 'applicatioenv':
+        if kl == 'applcationrole':
+            print(resource.id)
             print(repr(k))
 
 
