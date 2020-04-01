@@ -32,12 +32,13 @@ def get_available_regions():
     return session.get_available_regions('ec2')
 
 
-def sg_has_range(sg, target_range: str) -> bool:
+def search_for_range(region, sg, target_range: str):
     for perm in sg.ip_permissions:
         for ip_range in perm.get('IpRanges'):
-            if ip_range.get('CidrIp') == target_range:
-                return True
-    return False
+            cidr_ip = ip_range.get('CidrIp')
+            if cidr_ip == target_range:
+                description = ip_range.get('Description')
+                log.info(f'{region} {sg.id} {sg.group_name} {cidr_ip} {description}')
 
 
 def main():
@@ -55,8 +56,7 @@ def main():
         ec2 = boto3.resource('ec2', region_name=region)
         try:
             for sg in ec2.security_groups.all():
-                if sg_has_range(sg, args.target_range):
-                    log.info(f'{region} {sg.id}')
+                search_for_range(region, sg, args.target_range)
         except botocore.exceptions.ClientError:
             log.warning(f'Skipping region {region}')
 

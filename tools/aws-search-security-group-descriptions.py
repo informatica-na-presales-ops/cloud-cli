@@ -30,13 +30,14 @@ def get_available_regions():
     return session.get_available_regions('ec2')
 
 
-def sg_has_text(sg, search_text: str) -> bool:
+def search_rule_descriptions(region, sg, search_text: str):
     search_text = search_text.lower()
     for perm in sg.ip_permissions:
         for ip_range in perm.get('IpRanges'):
-            if search_text in ip_range.get('Description', '').lower():
-                return True
-    return False
+            description = ip_range.get('Description', '')
+            if search_text in description.lower():
+                cidr_ip = ip_range.get('CidrIp')
+                log.info(f'{region} {sg.id} {sg.group_name} {cidr_ip} {description}')
 
 
 def main():
@@ -53,8 +54,7 @@ def main():
         ec2 = boto3.resource('ec2', region_name=region)
         try:
             for sg in ec2.security_groups.all():
-                if sg_has_text(sg, args.search_text):
-                    log.info(f'{region} {sg.id}')
+                search_rule_descriptions(region, sg, args.search_text)
         except botocore.exceptions.ClientError:
             log.warning(f'Skipping region {region}')
 
