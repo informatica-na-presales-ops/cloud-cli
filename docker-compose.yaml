@@ -8,6 +8,19 @@ services:
       - aws-credentials:/root/.aws
       - azure-credentials:/root/.azure
 
+  aws:
+    image: amazon/aws-cli:2.0.7
+    volumes:
+      - aws-credentials:/root/.aws
+
+  az:
+    image: mcr.microsoft.com/azure-cli:2.3.1
+    entrypoint:
+#      - /bin/bash
+      - /usr/local/bin/az
+    volumes:
+      - azure-credentials:/root/.azure
+
 volumes:
   aws-credentials:
   azure-credentials:
