@@ -1,3 +1,4 @@
+--extra-index-url https://alpine-wheels.github.io/index
 awscli==1.18.38
 azure-cli==2.3.1
 azure-mgmt-subscription==0.5.0
