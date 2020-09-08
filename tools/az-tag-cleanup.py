@@ -13,9 +13,7 @@ def check_tags(resource):
     if resource.tags is None:
         resource.tags = {}
     for k in resource.tags.keys():
-        kl = k.lower()
-        # if 'bus' in kl and not kl.startswith('b'):
-        if kl == 'applcationrole':
+        if k in (' APPLICATIONENV', 'APPLCATIONROLE', 'APPLICATIOENV', 'BUSINESSUNIT\xa0', '\xa0BUSINESSUNIT'):
             print(resource.id)
             print(repr(k))
 
