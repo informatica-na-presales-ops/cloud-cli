@@ -33,7 +33,7 @@ def main():
     for region in get_available_regions():
         ec2 = boto3.resource('ec2', region_name=region)
         try:
-            filters = [{'Name': f'tag:{settings.tag_name}', 'Values': [settings.old_value]}]
+            filters = [{'Name': 'tag-key', 'Values': [settings.tag_name]}]
             tags = [{'Key': settings.tag_name, 'Value': settings.new_value}]
             instances = ec2.instances.filter(Filters=filters)
             instances.create_tags(Tags=tags)
