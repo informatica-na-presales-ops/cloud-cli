@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   cloud-cli:
@@ -10,16 +10,24 @@ services:
 
   aws:
     image: amazon/aws-cli:2.0.7
+    entrypoint:
+      - /bin/bash
+    environment:
+      PS1: '\n\[\033[1;36m\]\w\[\033[0m\] \$$ ' # double dollar sign required by compose file reference
     volumes:
       - aws-credentials:/root/.aws
+      - ./tools:/tools
 
   az:
-    image: mcr.microsoft.com/azure-cli:2.3.1
+    image: mcr.microsoft.com/azure-cli:2.10.1
     entrypoint:
-#      - /bin/bash
-      - /usr/local/bin/az
+      - /bin/bash
+#      - /usr/local/bin/az
+    environment:
+      PS1: '\n\[\033[1;36m\]\w\[\033[0m\] \$$ ' # double dollar sign required by compose file reference
     volumes:
       - azure-credentials:/root/.azure
+      - ./tools:/tools
 
 volumes:
   aws-credentials:
