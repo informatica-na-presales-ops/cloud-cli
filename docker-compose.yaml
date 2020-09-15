@@ -19,7 +19,7 @@ services:
       - ./tools:/tools
 
   az:
-    image: mcr.microsoft.com/azure-cli:2.10.1
+    image: mcr.microsoft.com/azure-cli:2.11.1
     entrypoint:
       - /bin/bash
 #      - /usr/local/bin/az
