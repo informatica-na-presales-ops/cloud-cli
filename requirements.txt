@@ -2,5 +2,5 @@
 awscli==1.18.140
 azure-cli==2.11.1
 azure-mgmt-subscription==0.6.0
-boto3==1.14.63
+boto3==1.15.0
 botocore==1.17.63
