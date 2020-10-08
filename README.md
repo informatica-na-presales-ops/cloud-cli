@@ -3,24 +3,11 @@
 A Docker image that includes both [AWS CLI][a] and [Azure CLI][b] tools
 
 ```sh
-$ docker image pull docker.pkg.github.com/informatica-na-presales-ops/cloud-cli/cloud-cli
+$ docker image pull ghcr.io/informatica-na-presales-ops/cloud-cli
 ```
 
 [a]: https://aws.amazon.com/cli/
 [b]: https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
-
-## Available tags
-
-* `latest` &rarr; `2020.3`  
-  `awscli==1.18.38`, `azure-cli==2.3.1`
-* `2020.2`  
-  `awscli==1.18.19`, `azure-cli==2.2.0`
-* `2020.1`  
-  `awscli==1.16.314`, `azure-cli==2.0.79`
-* `2019.6`  
-  `awscli==1.16.309`, `azure-cli==2.0.78`
-* `2019.5`  
-  `awscli==1.16.287`, `azure-cli==2.0.76`
 
 ## Usage
 

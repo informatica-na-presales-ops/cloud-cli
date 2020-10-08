@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   cloud-cli:
-    image: docker.pkg.github.com/informatica-na-presales-ops/cloud-cli/cloud-cli
+    image: ghcr.io/informatica-na-presales-ops/cloud-cli
     build: .
     volumes:
       - aws-credentials:/root/.aws
