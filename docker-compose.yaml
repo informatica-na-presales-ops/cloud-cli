@@ -1,15 +1,8 @@
 version: '3.8'
 
 services:
-  cloud-cli:
-    image: ghcr.io/informatica-na-presales-ops/cloud-cli
-    build: .
-    volumes:
-      - aws-credentials:/root/.aws
-      - azure-credentials:/root/.azure
-
   aws:
-    image: amazon/aws-cli:2.0.7
+    image: amazon/aws-cli:2.0.56
     entrypoint:
       - /bin/bash
     environment:
@@ -19,7 +12,7 @@ services:
       - ./tools:/tools
 
   az:
-    image: mcr.microsoft.com/azure-cli:2.11.1
+    image: mcr.microsoft.com/azure-cli:2.12.1
     entrypoint:
       - /bin/bash
 #      - /usr/local/bin/az
