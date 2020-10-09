@@ -5,10 +5,11 @@ services:
     image: amazon/aws-cli:2.0.56
     entrypoint:
       - /bin/bash
+#      - /usr/local/bin/aws
     environment:
       PS1: '\n\[\033[1;36m\]\w\[\033[0m\] \$$ ' # double dollar sign required by compose file reference
     volumes:
-      - aws-credentials:/root/.aws
+      - aws-config:/root/.aws
       - ./tools:/tools
 
   az:
@@ -19,9 +20,21 @@ services:
     environment:
       PS1: '\n\[\033[1;36m\]\w\[\033[0m\] \$$ ' # double dollar sign required by compose file reference
     volumes:
-      - azure-credentials:/root/.azure
+      - az-config:/root/.azure
+      - ./tools:/tools
+
+  gcp:
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk:313.0.1-alpine
+    entrypoint:
+      - /bin/bash
+#      - /google-cloud-sdk/bin/gcloud
+    environment:
+      PS1: '\n\[\033[1;36m\]\w\[\033[0m\] \$$ ' # double dollar sign required by compose file reference
+    volumes:
+      - gcp-config:/root/.config
       - ./tools:/tools
 
 volumes:
-  aws-credentials:
-  azure-credentials:
+  aws-config:
+  az-config:
+  gcp-config:
