@@ -24,7 +24,7 @@ services:
       - ./tools:/tools
 
   gcp:
-    image: gcr.io/google.com/cloudsdktool/cloud-sdk:313.0.1-alpine
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk:328.0.0-alpine
     entrypoint:
       - /bin/bash
 #      - /google-cloud-sdk/bin/gcloud
