@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   aws:
-    image: amazon/aws-cli:2.0.56
+    image: amazon/aws-cli:2.1.38
     entrypoint:
       - /bin/bash
 #      - /usr/local/bin/aws
