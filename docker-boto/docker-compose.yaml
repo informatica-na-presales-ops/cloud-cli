@@ -1,0 +1,6 @@
+version: '3.8'
+
+services:
+  boto:
+    image: ghcr.io/informatica-na-presales-ops/boto
+    build: .
